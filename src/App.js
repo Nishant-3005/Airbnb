@@ -1,39 +1,38 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 function App() {
-  const properties = [
-    {
-      title: "Beach House",
-      location: "Goa",
-      price: "₹5000/night"
-    },
-    {
-      title: "Mountain Cabin",
-      location: "Manali",
-      price: "₹3500/night"
-    },
-    {
-      title: "Luxury Apartment",
-      location: "Mumbai",
-      price: "₹7000/night"
-    }
-  ];
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/properties")
+      .then((res) => {
+        setProperties(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>🏠 BNB Clone</h1>
+      <h1>🏠 Airbnb Clone (MERN)</h1>
 
-      {properties.map((property, index) => (
+      {properties.map((property) => (
         <div
-          key={index}
+          key={property.id}
           style={{
-            border: "1px solid gray",
+            border: "1px solid #ddd",
             padding: "15px",
-            margin: "10px",
-            borderRadius: "10px"
+            marginTop: "15px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
           }}
         >
           <h2>{property.title}</h2>
-          <p>{property.location}</p>
-          <p>{property.price}</p>
+          <p>📍 {property.location}</p>
+          <p>₹{property.price}/night</p>
         </div>
       ))}
     </div>
