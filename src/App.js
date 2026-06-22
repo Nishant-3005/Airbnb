@@ -16,10 +16,9 @@ function App() {
       <nav
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           padding: "20px",
           borderBottom: "1px solid #ddd",
-          backgroundColor: "white",
         }}
       >
         <h2 style={{ color: "#ff385c" }}>Airbnb</h2>
@@ -29,7 +28,7 @@ function App() {
           placeholder="Search destinations"
           style={{
             padding: "10px",
-            width: "300px",
+            width: "250px",
             borderRadius: "20px",
             border: "1px solid gray",
           }}
@@ -54,7 +53,7 @@ function App() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
             gap: "20px",
           }}
         >
