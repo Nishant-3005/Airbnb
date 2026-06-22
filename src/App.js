@@ -85,8 +85,20 @@ function App() {
               />
 
               <div style={{ padding: "15px" }}>
-                <h3>{property.title}</h3>
-                <p>📍 {property.location}</p>
+             <button
+                 style={{
+                 background: "none",
+                 border: "none",
+                 fontSize: "24px",
+                 cursor: "pointer",
+                 float: "right"
+                }}
+              >
+               ❤️
+             </button>
+
+                 <h3>{property.title}</h3>
+                 <p>📍 {property.location}</p>
                 <p>₹{property.price}/night</p>
                 <p>⭐ {property.rating}</p>
               </div>
