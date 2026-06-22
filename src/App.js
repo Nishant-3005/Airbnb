@@ -88,6 +88,7 @@ function App() {
                 <h3>{property.title}</h3>
                 <p>📍 {property.location}</p>
                 <p>₹{property.price}/night</p>
+                <p>⭐ {property.rating}</p>
               </div>
             </div>
           ))}
