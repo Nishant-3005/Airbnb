@@ -3,6 +3,7 @@ import axios from "axios";
 
 function App() {
   const [properties, setProperties] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios
@@ -10,6 +11,10 @@ function App() {
       .then((res) => setProperties(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const filteredProperties = properties.filter((property) =>
+    property.location.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
@@ -25,7 +30,9 @@ function App() {
 
         <input
           type="text"
-          placeholder="Search destinations"
+          placeholder="Search by location"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           style={{
             padding: "10px",
             width: "250px",
@@ -57,9 +64,9 @@ function App() {
             gap: "20px",
           }}
         >
-          {properties.map((property) => (
+          {filteredProperties.map((property) => (
             <div
-              key={property.id}
+              key={property._id}
               style={{
                 border: "1px solid #ddd",
                 borderRadius: "15px",
